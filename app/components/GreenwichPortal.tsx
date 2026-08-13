@@ -2,9 +2,10 @@
 
 import {
   BookOpen, Calendar, ClipboardList, CreditCard, GraduationCap, 
-  BarChart3, Users, Bell, LogOut, ChevronRight, Shield,
-  Heart, Landmark, Star, Award, ExternalLink, Sparkles
+  BarChart3, Bell, LogOut, ChevronRight,
+  Heart, Sparkles, ExternalLink
 } from "lucide-react";
+import { STUDENT } from "../data/mockData";
 
 interface Props {
   onEnterKhayal: () => void;
@@ -13,54 +14,48 @@ interface Props {
 const serviceCards = [
   {
     icon: <BookOpen size={20} color="white" />,
-    iconBg: "bg-[#6366f1]",
+    iconBgColor: "#6366f1",
     title: "Summer 2026 Courses",
     desc: "Add / Drop / Attendance",
     action: "MANAGE",
-    accent: "bg-[#eef2ff]",
   },
   {
     icon: <ClipboardList size={20} color="white" />,
-    iconBg: "bg-[#ec4899]",
+    iconBgColor: "#ec4899",
     title: "Manage Exams",
     desc: "Schedule & Conduct",
     action: "MANAGE",
-    accent: "bg-[#fdf2f8]",
   },
   {
     icon: <Calendar size={20} color="white" />,
-    iconBg: "bg-[#6366f1]",
+    iconBgColor: "#6366f1",
     title: "Exams Schedule",
     desc: "Exams Timetable",
     action: "VIEW",
-    accent: "bg-[#eef2ff]",
   },
   {
     icon: <BarChart3 size={20} color="white" />,
-    iconBg: "bg-[#ec4899]",
+    iconBgColor: "#ec4899",
     title: "Progress",
     desc: "Attempted Courses Evaluation",
     action: "VIEW",
-    accent: "bg-[#fdf2f8]",
   },
 ];
 
 const academicCards = [
   {
     icon: <BookOpen size={20} color="white" />,
-    iconBg: "bg-[#6366f1]",
+    iconBgColor: "#6366f1",
     title: "Important Info",
     desc: "Academic Calendar / Hand Book",
     action: "VIEW",
-    accent: "bg-[#eef2ff]",
   },
   {
     icon: <ClipboardList size={20} color="white" />,
-    iconBg: "bg-[#ec4899]",
+    iconBgColor: "#ec4899",
     title: "Fall 2026–27 Registration",
     desc: "Opens after midterm",
     action: "REGISTER",
-    accent: "bg-[#fdf2f8]",
     badge: "Opens after midterm",
   },
 ];
@@ -68,19 +63,17 @@ const academicCards = [
 const adminCards = [
   {
     icon: <CreditCard size={20} color="white" />,
-    iconBg: "bg-[#6366f1]",
+    iconBgColor: "#6366f1",
     title: "Invoices",
     desc: "Invoices & Payment Status",
     action: "VIEW",
-    accent: "bg-[#eef2ff]",
   },
   {
     icon: <Bell size={20} color="white" />,
-    iconBg: "bg-[#ec4899]",
+    iconBgColor: "#ec4899",
     title: "Reach Out",
     desc: "Feedback, Grievance & Complaints",
     action: "MANAGE",
-    accent: "bg-[#fdf2f8]",
   },
 ];
 
@@ -106,13 +99,13 @@ export default function GreenwichPortal({ onEnterKhayal }: Props) {
         <div style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
           <div style={{ width: 64, height: 64, borderRadius: 12, background: "rgba(255,255,255,0.1)", border: "2px solid rgba(255,255,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, overflow: "hidden" }}>
             {/* Student avatar */}
-            <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg, #60a5fa, #a78bfa)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, fontWeight: 700, color: "white" }}>AM</div>
+            <div style={{ width: "100%", height: "100%", background: "linear-gradient(135deg, #60a5fa, #a78bfa)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, fontWeight: 700, color: "white" }}>{STUDENT.initials}</div>
           </div>
           <div style={{ flex: 1 }}>
             <p style={{ color: "rgba(255,255,255,0.7)", fontSize: 13, marginBottom: 2 }}>Good Evening,</p>
-            <h2 style={{ color: "white", fontWeight: 800, fontSize: 20, marginBottom: 6, letterSpacing: "-0.3px" }}>Areen Momin</h2>
+            <h2 style={{ color: "white", fontWeight: 800, fontSize: 20, marginBottom: 6, letterSpacing: "-0.3px" }}>{STUDENT.name}</h2>
             <div style={{ background: "rgba(255,255,255,0.15)", borderRadius: 8, padding: "4px 10px", display: "inline-block" }}>
-              <p style={{ color: "rgba(255,255,255,0.9)", fontSize: 12, fontWeight: 500 }}>BS | PSYCHOLOGY | BS82 11361</p>
+              <p style={{ color: "rgba(255,255,255,0.9)", fontSize: 12, fontWeight: 500 }}>{STUDENT.program}</p>
             </div>
           </div>
           <button style={{ background: "rgba(255,255,255,0.15)", border: "none", borderRadius: 8, padding: "6px 10px", color: "white", fontSize: 12, cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}>
@@ -273,19 +266,18 @@ function SectionTitle({ title, rightContent }: { title: string; rightContent?: R
 }
 
 function PortalServiceCard({
-  icon, iconBg, title, desc, action, accent, badge
+  icon, iconBgColor, title, desc, action, badge
 }: {
   icon: React.ReactNode;
-  iconBg: string;
+  iconBgColor: string;
   title: string;
   desc: string;
   action: string;
-  accent: string;
   badge?: string;
 }) {
   return (
     <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 14, padding: 14, minHeight: 130 }}>
-      <div className={`${iconBg} ${accent}`} style={{ width: 44, height: 44, borderRadius: 10, background: iconBg.replace("bg-", ""), display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
+      <div style={{ width: 44, height: 44, borderRadius: 10, background: iconBgColor, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
         {icon}
       </div>
       <h4 style={{ fontWeight: 700, fontSize: 14, color: "#1a2332", marginBottom: 4, lineHeight: 1.3 }}>{title}</h4>
