@@ -294,10 +294,10 @@ function ActivityCard({ title, partner, hours, date, verified, certificate, onDo
   );
 }
 
-function VerifyCard({ icon, color, title, desc, status, statusColor, statusBg }: { icon: string; color: string; title: string; desc: string; status: string; statusColor: string; statusBg: string }) {
+function VerifyCard({ icon, color, iconColor, title, desc, status, statusColor, statusBg }: { icon: string; color: string; iconColor: string; title: string; desc: string; status: string; statusColor: string; statusBg: string }) {
   return (
     <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-      <div style={{ width: 44, height: 44, background: color, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 20 }}>
+      <div style={{ width: 44, height: 44, background: color, color: iconColor, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 20 }}>
         {icon}
       </div>
       <div>

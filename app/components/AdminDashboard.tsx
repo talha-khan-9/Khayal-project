@@ -278,7 +278,7 @@ export default function AdminDashboard({ navigate, customOpportunities = [] }: P
   );
 }
 
-function AdminStat({ value, label, icon, color }: { value: string; label: string; icon: React.ReactNode; color: string }) {
+function AdminStat({ value, label, icon, color, textColor }: { value: string; label: string; icon: React.ReactNode; color: string; textColor: string }) {
   return (
     <div style={{ background: "white", border: "1px solid #e2e8f0", borderRadius: 14, padding: "16px 14px", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}>
       <div style={{ width: 40, height: 40, background: color, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 10 }}>
